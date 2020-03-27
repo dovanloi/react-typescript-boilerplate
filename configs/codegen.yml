@@ -1,0 +1,25 @@
+schema: http://api3.vtv.vn/graphql
+documents: ./src/graphql/**/*.gql
+generates:
+  ./src/graphql-api.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withComponent: false
+      withHooks: true
+      withHOC: false
+      apolloReactCommonImportFrom: @apollo/client
+      apolloReactComponentsImportFrom: @apollo/client
+      apolloReactHocImportFrom: @apollo/client
+      apolloReactHooksImportFrom: @apollo/client
+  ./src/interfaces/graphql.interface.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+  ./src/graphql/schema.json:
+    plugins:
+      - introspection
+    config:
+      minify: true
